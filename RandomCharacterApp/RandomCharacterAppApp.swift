@@ -1,17 +1,13 @@
-//
-//  RandomCharacterAppApp.swift
-//  RandomCharacterApp
-//
-//  Created by chryshel on 2025-05-17.
-//
 
 import SwiftUI
+import Moya
 
 @main
 struct RandomCharacterAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
+            let provider = MoyaProvider<CharacterTargetType>()
+            let service = RemoteCharacterService(provider: provider)
+            CharacterCatologeView(service: service)        }
     }
 }
